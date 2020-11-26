@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        var input = prompt('원하는 문자열을 적으시오');
+        const anwser = [];
+
+
+
+const solution = (arr, n, k, answer) =>
+{
+   if(n === arr.length-1)
+
+{
+const str = arr.slice(0, k).join("");
+if(!answer.includes(str))
+answer.push(str);
+return;
+}
+
+else
+{
+for(let i=n; i<arr.length; i++)
+{
+let temp = arr[n];
+arr[n] = arr[i];
+arr[i] = temp;
+
+
+solution(arr, n+1, k, answer);
+arr[i] = arr[n];
+arr[n] = temp;
+}
+
+return answer;
+}
+};
+
+
+for(let i = 1; i <= input.length; i++)
+{
+    answerto = [];
+    console.log(solution(input.split(''), 0, i, answerto));
+
+}
+
+    </script>
+</body>
+</html>
